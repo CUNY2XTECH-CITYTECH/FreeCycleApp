@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "15.1.6",
+    "next": "^15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "supertokens-auth-react": "^0.48.0",
+    "supertokens-node": "^21.1.0",
     "supertokens-web-js": "^0.14.0"
   },
   "devDependencies": {
