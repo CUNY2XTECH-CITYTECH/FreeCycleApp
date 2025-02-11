@@ -30,7 +30,7 @@ async function getUser(user_id: string) {
         const user = await db
         .select()
         .from(usersTable)
-        .where(eq(usersTable.User_id, user_id))
+        .where(eq(usersTable.id, user_id))
         .limit(1); // Ensures only one user is returned
         if (user.length === 0) {
             console.log('User not found');
@@ -87,7 +87,7 @@ async function getProduct(product_id: string) {
         const product = await db
             .select()
             .from(productsTable)
-            .where(eq(productsTable.name, product_id)) 
+            .where(eq(productsTable.id, product_id)) 
             .limit(1); // Ensures only one product is returned
             if (product.length === 0) {
                 console.log('Product not found');
@@ -101,10 +101,16 @@ async function getProduct(product_id: string) {
 }
 
 async function updateProduct(name: string, newPrice: number) {
-    //Update Product
     await db
         .update(productsTable)
         .set({ price: newPrice })
         .where(eq(productsTable.name, name));
     console.log('Product Info Updated');
+}
+
+async function deleteProduct(product_id: string) {
+    await db
+        .delete(productsTable)
+        .where(eq(productsTable.id, product_id));
+    console.log('Product Deleted');
 }
