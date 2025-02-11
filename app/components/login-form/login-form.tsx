@@ -1,6 +1,9 @@
+"use client"; 
 import { signIn } from "supertokens-web-js/recipe/emailpassword";
 
-async function signInClicked(formData: FormData) {
+async function signInClicked() {
+
+    const formData = new FormData;
 
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
@@ -50,13 +53,14 @@ export default function Login_form(){
     return (
     <div>
         <h1>Login</h1>
-        <form onSubmit={signInClicked}>
-            <label htmlFor="email">Email</label>
-            <input type="email" name="email"></input> <br></br>
-
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password"></input> <br></br>
-
+        <br></br>
+        <form onSubmit={() => signInClicked()}>
+            <label htmlFor="email">Email </label> <br></br>
+            <input type="email" name="email"></input>
+            <br></br> <br></br>
+            <label htmlFor="password">Password </label> <br></br>
+            <input type="password" name="password"></input> 
+            <br></br> <br></br>
             <input type="submit" value="Submit"></input>
         </form>
     </div>
