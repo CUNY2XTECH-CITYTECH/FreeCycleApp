@@ -1,7 +1,9 @@
-import { useRef } from "react";
 import { signIn } from "supertokens-web-js/recipe/emailpassword";
 
-async function signInClicked(email: string, password: string) {
+async function signInClicked(formData: FormData) {
+
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
     
     try {
         let response = await signIn({
@@ -45,17 +47,15 @@ async function signInClicked(email: string, password: string) {
 
 export default function Login_form(){
 
-    const emailRef = useRef(null)
-
     return (
     <div>
         <h1>Login</h1>
-        <form>
+        <form onSubmit={signInClicked}>
             <label htmlFor="email">Email</label>
-            <input type="email" id="email"></input> <br></br>
+            <input type="email" name="email"></input> <br></br>
 
             <label htmlFor="password">Password</label>
-            <input type="password" id="password"></input> <br></br>
+            <input type="password" name="password"></input> <br></br>
 
             <input type="submit" value="Submit"></input>
         </form>
