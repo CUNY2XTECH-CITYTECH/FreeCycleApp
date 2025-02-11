@@ -2,7 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 //frontendConfig cant be found for some reason
-// import { frontendConfig } from 'app/config/frontend.ts';
+import { frontendConfig } from './config/frontend.ts';
 import { SuperTokensInit } from "./components/supertokensInit";
 
 const inter = Inter({ subsets: ['latin'] })
