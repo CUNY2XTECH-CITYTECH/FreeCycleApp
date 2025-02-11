@@ -1,7 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-//frontendConfig cant be found for some reason
 import { frontendConfig } from './config/frontend.ts';
 import { SuperTokensInit } from "./components/supertokensInit";
 
