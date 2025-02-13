@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "express": "^4.21.2",
     "next": "15.1.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "supertokens-node": "^21.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
