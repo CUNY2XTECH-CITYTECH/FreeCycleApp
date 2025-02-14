@@ -11,17 +11,18 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.39.1",
+    "express": "^4.21.2",
     "next": "15.1.6",
     "pg": "^8.13.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "express": "^4.21.2",
-    "supertokens-node": "^21.1.0",
     "supertokens-auth-react": "^0.48.0",
+    "supertokens-node": "^21.1.0",
     "supertokens-web-js": "^0.14.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/express": "^5.0.0",
     "@types/node": "^20",
     "@types/pg": "^8.11.11",
     "@types/react": "^19",

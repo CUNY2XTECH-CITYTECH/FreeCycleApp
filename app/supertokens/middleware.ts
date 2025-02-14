@@ -1,4 +1,4 @@
-import express from "express"; // express is installed, unsure why error is raised
+import express from "express"
 import { verifySession } from "supertokens-node/recipe/session/framework/express";
 import { SessionRequest } from "supertokens-node/framework/express";
 
