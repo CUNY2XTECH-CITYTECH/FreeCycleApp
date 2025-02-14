@@ -14,7 +14,9 @@
     "next": "15.1.6",
     "pg": "^8.13.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "express": "^4.21.2",
+    "supertokens-node": "^21.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
