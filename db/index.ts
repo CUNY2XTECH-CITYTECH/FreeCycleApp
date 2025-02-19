@@ -1,28 +1,28 @@
-import 'dotenv/config';
-import { drizzle } from 'drizzle-orm/node-postgres';
 import { usersTable, productsTable } from './schema';
 import { eq } from 'drizzle-orm';
+import { db } from './db';
 
 
 // USERS
 
 // Connect to the database
-//Check if environment variable DATABASE_URL is set before connecting
-if (!process.env.DATABASE_URL) {
-    throw new Error('DATABASE_URL is not defined');
-}
-const db = drizzle(process.env.DATABASE_URL!);
 
 interface User {
-    name: string;
     email: string;
+    username: string;
+    fullName: string;
 }
 
 async function createNewUser(user: User) {
-    await db
-    .insert(usersTable)
-    .values(user);
-    console.log('New User Created');
+    try {
+        await db
+        .insert(usersTable)
+        .values(user)
+        .returning()
+        console.log('New User Created');
+    } catch (error) {
+        console.log('Error creating user: ', error)
+    }
 }
 
 async function getUser(user_id: string) {
@@ -45,21 +45,27 @@ async function getUser(user_id: string) {
 
 async function updateUser(email: string, newName: string) {
     //Update User
-    await db
+    try {
+        await db
         .update(usersTable)
-        .set({ name: newName })
+        .set({ fullName: newName })
         .where(eq(usersTable.email, email));
-    console.log('User Info Updated');
+        console.log('User Info Updated');
+    } catch (error) {
+        console.log('Error updating user: ', error)
+    }
 }
     
 async function deleteUser(email: string) {
-     // Delete User
-    await db
+    try {
+        await db
         .delete(usersTable)
         .where(eq(usersTable.email, email));
-    console.log('User Deleted');
+        console.log('User Deleted');
+    } catch (error) {
+        console.log('Error deleting user: ', error)
+    } 
 }
-
 
 // PRODUCTS
 
@@ -76,10 +82,14 @@ interface Product {
 }
 
 async function createNewProduct(product: Product) {
-    await db
-    .insert(productsTable)
-    .values(product);
-    console.log('New Product Created');
+    try {
+        await db
+        .insert(productsTable)
+        .values(product);
+        console.log('New Product Created');
+    } catch (error) {
+        console.log('Failed to create product: ', error)
+    }
 }
 
 async function getProduct(product_id: string) {
@@ -101,16 +111,35 @@ async function getProduct(product_id: string) {
 }
 
 async function updateProduct(name: string, newPrice: number) {
-    await db
+    try {
+        await db
         .update(productsTable)
         .set({ price: newPrice })
         .where(eq(productsTable.name, name));
-    console.log('Product Info Updated');
+        console.log('Product Info Updated');
+    } catch (error) {
+        console.log('Error updating product') 
+    }  
 }
 
 async function deleteProduct(product_id: string) {
-    await db
+    try {
+        await db
         .delete(productsTable)
         .where(eq(productsTable.id, product_id));
-    console.log('Product Deleted');
+        console.log('Product Deleted');
+    } catch (error) {
+        console.log('Error deleting product', error) 
+    }
+}
+
+module.exports = {
+    createNewUser,
+    getUser,
+    updateUser,
+    deleteUser,
+    createNewProduct,
+    getProduct,
+    updateProduct,
+    deleteProduct
 }

@@ -1,0 +1,11 @@
+verison: '3'
+
+services:
+
+  postgres:
+    image: postgres
+    ports:
+      ''
+
+  supertokens:
+    image:
