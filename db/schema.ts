@@ -1,11 +1,13 @@
 
 import { boolean, integer, numeric, pgTable, text, uuid, varchar, timestamp, real } from "drizzle-orm/pg-core";
 
+// they're using uuid here, but it should be id: serial('id').primaryKey()
 
  export const usersTable = pgTable ("users", {
     id: uuid().primaryKey().defaultRandom(),
-    name: varchar({ length: 50 }).notNull(),
     email: varchar({ length: 100 }).notNull().unique(),
+    username: varchar({ length: 100 }).notNull().unique(),
+    fullName: varchar({ length: 50 }).notNull(),
 });
 
 export const productsTable = pgTable("products", {
