@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image'; // For optimized image loading
-import Link from 'next/link'; // For client-side navigation
-import './home.css';
+import Link from 'next/link'; 
 
 export default function HomePage() {
   return (
     <>
+    {/* Navigation Bar */}
       <header>
         <div className="wrapper">
           <nav className="nav-main">
