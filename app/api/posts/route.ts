@@ -9,10 +9,11 @@ const pool = new Pool({
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === "GET") {
       try {
-        const result = await pool.query('SELECT * FROM posts');
+        const result = await pool.query("SELECT * FROM posts");
         const posts = result.rows;
         res.status(200).json(posts);
       } catch (error) {
+        console.error("Database query error:", error);
         res.status(500).json({ message: "Internal Server Error" });
       }
     } else {
