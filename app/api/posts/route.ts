@@ -1,22 +1,17 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { Pool } from "pg";
+import { NextResponse } from 'next/server';
+import { Pool } from 'pg';
 
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.DATABASE_URL,
 });
 
-
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-    if (req.method === "GET") {
-      try {
-        const result = await pool.query("SELECT * FROM posts");
-        const posts = result.rows;
-        res.status(200).json(posts);
-      } catch (error) {
-        console.error("Database query error:", error);
-        res.status(500).json({ message: "Internal Server Error" });
-      }
-    } else {
-      res.status(405).json({ message: "Method Not Allowed" });
-    }
-  };
+export async function GET() {
+  try {
+    const result = await pool.query('SELECT * FROM posts');
+    const posts = result.rows;
+    return NextResponse.json(posts, { status: 200 });
+  } catch (error) {
+    console.error('Database query error:', error);
+    return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
+  }
+}
