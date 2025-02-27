@@ -7,13 +7,13 @@ import { db } from './db';
 
 // Connect to the database
 
-interface User {
+export interface User {
     email: string;
     username: string;
     fullName: string;
 }
 
-async function createNewUser(user: User) {
+export async function createNewUser(user: User) {
     try {
         await db
         .insert(usersTable)
@@ -25,7 +25,7 @@ async function createNewUser(user: User) {
     }
 }
 
-async function getUser(user_id: string) {
+export async function getUser(user_id: string) {
     try {
         const user = await db
         .select()
@@ -43,7 +43,7 @@ async function getUser(user_id: string) {
     }
 }
 
-async function updateUser(email: string, newName: string) {
+export async function updateUser(email: string, newName: string) {
     //Update User
     try {
         await db
@@ -56,7 +56,7 @@ async function updateUser(email: string, newName: string) {
     }
 }
     
-async function deleteUser(email: string) {
+export async function deleteUser(email: string) {
     try {
         await db
         .delete(usersTable)
@@ -69,7 +69,7 @@ async function deleteUser(email: string) {
 
 // PRODUCTS
 
-interface Product {
+export interface Product {
     name: string;
     description: string;
     price: number;
@@ -81,7 +81,7 @@ interface Product {
     isAvailable: boolean;
 }
 
-async function createNewProduct(product: Product) {
+export async function createNewProduct(product: Product) {
     try {
         await db
         .insert(productsTable)
@@ -92,7 +92,7 @@ async function createNewProduct(product: Product) {
     }
 }
 
-async function getProduct(product_id: string) {
+export async function getProduct(product_id: string) {
     try {
         const product = await db
             .select()
@@ -101,7 +101,7 @@ async function getProduct(product_id: string) {
             .limit(1); // Ensures only one product is returned
             if (product.length === 0) {
                 console.log('Product not found');
-                return null;
+                return [];
             }
         console.log('Getting product from the database:', product);
         return product;  // Returns the product data
@@ -110,7 +110,23 @@ async function getProduct(product_id: string) {
     }
 }
 
-async function updateProduct(name: string, newPrice: number) {
+export async function getAllProducts() {
+    try {
+        const products = await db
+            .select()
+            .from(productsTable)
+            if (products.length === 0) {
+                console.log('Products not found');
+                return [];
+            }
+        console.log('Getting products from the database:', products);
+        return products;  // Returns the products 
+    } catch (error) {
+        console.log('Error getting products', error);
+    }
+}
+
+export async function updateProduct(name: string, newPrice: number) {
     try {
         await db
         .update(productsTable)
@@ -122,7 +138,7 @@ async function updateProduct(name: string, newPrice: number) {
     }  
 }
 
-async function deleteProduct(product_id: string) {
+export async function deleteProduct(product_id: string) {
     try {
         await db
         .delete(productsTable)
@@ -131,15 +147,4 @@ async function deleteProduct(product_id: string) {
     } catch (error) {
         console.log('Error deleting product', error) 
     }
-}
-
-module.exports = {
-    createNewUser,
-    getUser,
-    updateUser,
-    deleteUser,
-    createNewProduct,
-    getProduct,
-    updateProduct,
-    deleteProduct
 }

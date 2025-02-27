@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Pool } from 'pg';
+import { getAllProducts } from '../../../db/index.ts';
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -7,9 +8,9 @@ const pool = new Pool({
 
 export async function GET() {
   try {
-    const result = await pool.query('SELECT * FROM posts');
-    const posts = result.rows;
-    return NextResponse.json(posts, { status: 200 });
+    const result = await getAllProducts();
+    const products = result;
+    return NextResponse.json(products, { status: 200 });
   } catch (error) {
     console.error('Database query error:', error);
     return NextResponse.json(
