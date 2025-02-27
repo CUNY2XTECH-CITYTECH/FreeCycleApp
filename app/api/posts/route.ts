@@ -12,6 +12,8 @@ export async function GET() {
     return NextResponse.json(posts, { status: 200 });
   } catch (error) {
     console.error('Database query error:', error);
-    return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json(
+      { message: 'Internal Server Error', error: error},
+      { status: 500 });
   }
 }
