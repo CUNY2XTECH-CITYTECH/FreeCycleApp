@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
-import { Pool } from 'pg';
+// import { Pool } from 'pg';
 import { getAllProducts } from '../../../db/index.ts';
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
+// const pool = new Pool({
+//   connectionString: process.env.DATABASE_URL,
+// });
 
 export async function GET() {
   try {
