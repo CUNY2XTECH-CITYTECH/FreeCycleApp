@@ -1,4 +1,3 @@
-
 import { boolean, integer, numeric, pgTable, text, uuid, varchar, timestamp, real } from "drizzle-orm/pg-core";
 
 // they're using uuid here, but it should be id: serial('id').primaryKey()
