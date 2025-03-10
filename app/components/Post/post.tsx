@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 type postProps = {
     content: string
@@ -7,11 +7,15 @@ type postProps = {
 }
 
 export const Post = ({content, image}: postProps) => {
-    return (
-    <div className="posts">
+    const [display, setDisplay] = useState(true);
+
+    return display ? (
+    <div className="post">
+
         <h1 className="post-title">Placeholder title, might add a prop for the title</h1>
         <p>{content}</p>
         <img src={image}></img>
+        <button onClick={() => setDisplay(false)}>Delete Post</button>
     </div>
-    )
+    ) : null;
 }
