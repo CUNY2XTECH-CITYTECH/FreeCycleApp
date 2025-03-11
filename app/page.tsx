@@ -5,9 +5,7 @@ import SuperTokens from 'supertokens-web-js';
 import Session from 'supertokens-web-js/recipe/session';
 import EmailPassword from 'supertokens-web-js/recipe/emailpassword';
 import HomePage from "./home/page.tsx";
-import Navbar from './components/Navbar.js';
 import Head from "next/head";
-import Footer from "./components/Footer.js";
 
 
 SuperTokens.init({
@@ -26,9 +24,7 @@ SuperTokens.init({
 export default function Home() {
   return (
     <div>
-      <Navbar/>
       <HomePage/>
-      <Footer/>
     </div>
   );
 }
