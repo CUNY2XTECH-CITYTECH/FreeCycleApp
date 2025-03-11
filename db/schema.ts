@@ -23,6 +23,9 @@ export const productsTable = pgTable("products", {
     is_available: boolean().default(true).notNull(),
 });
 
+export type Product = typeof productsTable.$inferSelect
+export type NewProduct = typeof productsTable.$inferInsert
+
 export const ordersTable = pgTable("orders", {
     id: uuid().primaryKey().defaultRandom(),
     user_id: uuid().notNull().references(() => usersTable.id),

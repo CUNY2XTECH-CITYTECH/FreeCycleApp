@@ -1,4 +1,4 @@
-import { usersTable, productsTable } from './schema';
+import { usersTable, productsTable, Product, NewProduct } from './schema';
 import { eq } from 'drizzle-orm';
 import { db } from './db';
 
@@ -67,28 +67,18 @@ export async function deleteUser(email: string) {
     } 
 }
 
-// PRODUCTS
-
-export interface Product {
-    name: string;
-    description: string;
-    price: number;
-    stock: number;
-    category: string;
-    imageUrl: string;
-    created_at: Date;
-    updated_at: Date;
-    isAvailable: boolean;
-}
-
-export async function createNewProduct(product: Product) {
+export async function createNewProduct(product: NewProduct) {
     try {
-        await db
+        console.log(product)
+        const newProduct = await db
         .insert(productsTable)
-        .values(product);
-        console.log('New Product Created');
+        .values(product)
+        .returning();
+        console.log('New Product Created', newProduct);
+        return newProduct;
     } catch (error) {
-        console.log('Failed to create product: ', error)
+        console.log('Failed to create product: ', error);
+        throw error;
     }
 }
 
