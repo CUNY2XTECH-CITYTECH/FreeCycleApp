@@ -8,6 +8,7 @@ if (typeof window !== 'undefined') {
   SuperTokensWebJs.init(frontendConfig());
 }
 
+// eslint-disable-next-line
 export const SuperTokensInit: React.FC<React.PropsWithChildren<{}>> = ({
   children,
 }) => {

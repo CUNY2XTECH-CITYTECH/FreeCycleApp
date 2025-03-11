@@ -2,7 +2,6 @@ import { usersTable, productsTable, Product, NewProduct } from './schema';
 import { eq } from 'drizzle-orm';
 import { db } from './db';
 
-
 // USERS
 
 // Connect to the database
