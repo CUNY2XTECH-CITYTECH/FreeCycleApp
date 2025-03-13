@@ -1,19 +1,19 @@
 import React, {useState, useEffect} from "react";
 
-function Posts(){
-    const [posts, setPosts] = useState([]);
+function UserProducts(){
+    const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(()=>{
-        const fetchPosts = async() => {
+        const fetchProducts = async() => {
             try {
                 const response = await fetch();
                 if (!response.ok){
-                    throw new Error('Failed to fetch posts');
+                    throw new Error('Failed to fetch products');
                 }
                 const data = await response.json();
-                setPosts(data);
+                setProducts(data);
             } catch (error) {
                 setError(error.message);
             } finally{
@@ -21,7 +21,7 @@ function Posts(){
             }
 
     };
-    fetchPosts();
+    fetchProducts();
 }, []);
 
 if (loading) {
@@ -34,12 +34,12 @@ if (error){
 
 return (
     <div>
-      <h1>Posts</h1>
-      {posts.map((post) => (
-        <Post key={post.id} post={post} /> // Render a Post component for each post
+      <h1>Products</h1>
+      {products.map((post) => (
+        <Products key={products.id} products={products} /> // Render a Post component for each post
       ))}
     </div>
   );
 }
 
-export default Posts;
+export default UserProducts;
