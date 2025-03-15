@@ -11,13 +11,13 @@ type productProps = {
 //Delete button will need to access the db using the id to remove it
 export const Product = ({id, name, description, imageUrl, price, stock}: productProps) => {
     const [display, setDisplay] = useState(true);
-    const deletePost = async () => {
+    const deleteProduct = async () => {
         const response = await fetch(`/api/products/${id}`, {
             method: 'delete'
         }) 
         if(response.status !== 200){
             alert("Did not delete post: " + name);
-            setDisplay(true);
+            setDisplay(true)
         }
 
     }
@@ -31,7 +31,7 @@ export const Product = ({id, name, description, imageUrl, price, stock}: product
         <p>Price: ${price}, In Stock: {stock}</p>
         <button onClick={() => {
             setDisplay(false)
-            deletePost();
+            deleteProduct();
             }}>Delete Post</button>
     </div>
     ) : null;
