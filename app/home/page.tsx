@@ -1,5 +1,5 @@
 import PostForm from "../components/post-form";
-import Navbar from "../components/navbar";
+// import Navbar from "../components/navbar/navbar";
 
 export default function HomePage() {
   return (
