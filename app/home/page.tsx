@@ -1,10 +1,5 @@
-import PostForm from "../components/post-form";
-import Navbar from "../components/navbar";
+import PostForm from "../components/post-form"
+import Navbar from "../components/navbar/Navbar"
+import Footer from "../components/footer/Footer"
 
-export default function HomePage() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <PostForm />
-    </div>
-  );
-}
+
