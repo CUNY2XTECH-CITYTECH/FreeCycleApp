@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Post from '; // Not sure what the path is 
+import Product from '../../../product'; 
 
 
 const Feed = () => {
@@ -11,8 +10,9 @@ const Feed = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await axios.get('/api/posts-form');
-                setPosts(response.data);
+                const response = await fetch('/api/products');
+                const data = await response.json();
+                setPosts(data);
             } catch (error) {
                 setError('Error fetching posts');
             } finally {
@@ -29,7 +29,7 @@ const Feed = () => {
     return (
         <div>
             { posts.map((post) => (
-              <Post key={post.id} post={post} />
+              <Product key={post.id} post={post} />
             ))}
         </div>
     );
