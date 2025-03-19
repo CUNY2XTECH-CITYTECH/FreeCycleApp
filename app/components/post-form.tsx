@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image"
 import React, { useState } from 'react';
 
 const PostForm = () => {
@@ -94,7 +95,7 @@ const PostForm = () => {
           <div className="flex space-x-4">
             {images.map((image, index) => (
               <div key={index} className="relative">
-                <img
+                <Image
                   src={URL.createObjectURL(image)}
                   alt={`Preview ${index}`}
                   className="w-24 h-24 object-cover rounded-lg"
