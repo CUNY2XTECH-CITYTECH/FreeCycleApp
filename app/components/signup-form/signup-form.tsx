@@ -71,6 +71,7 @@ export default function SignUpForm() {
 
         window.location.href = "/home";
       }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       if (err.isSuperTokensGeneralError === true) {
         // this may be a custom error message sent from the API by you.
@@ -90,6 +91,7 @@ export default function SignUpForm() {
       if (response.doesExist) {
         window.alert("Email already exists. Please sign in instead");
       }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       if (err.isSuperTokensGeneralError === true) {
         // this may be a custom error message sent from the API by you.

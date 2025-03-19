@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image"
 
 const ProductForm = () => {
   const [name, setName] = useState("");
@@ -95,7 +96,7 @@ const ProductForm = () => {
           <div className="flex space-x-4">
             {images.map((image, index) => (
               <div key={index} className="relative">
-                <img src={URL.createObjectURL(image)} alt={`Preview ${index}`} className="w-24 h-24 object-cover rounded-lg" />
+                <Image src={URL.createObjectURL(image)} alt={`Preview ${index}`} className="w-24 h-24 object-cover rounded-lg" />
                 <button type="button" onClick={() => setImages(images.filter((_, i) => i !== index))} className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1">&times;</button>
               </div>
             ))}

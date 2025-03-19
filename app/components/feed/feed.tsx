@@ -2,9 +2,17 @@
 import React, { useState, useEffect } from 'react';
 import { Product } from '../Product/product'; 
 
+type productProps = {
+    id: number
+    name: string
+    description: string
+    imageUrl: string
+    price: number
+    stock: number
+}
 
 const Feed = () => {
-    const [posts, setPosts] = useState<any[]>([]);
+    const [posts, setPosts] = useState<productProps[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -15,7 +23,7 @@ const Feed = () => {
                 const data = await response.json();
                 setPosts(data);
             } catch (error) {
-                setError('Error fetching posts');
+                setError(`Error fetching posts: ${error}`);
             } finally {
                 setLoading(false);
             }
