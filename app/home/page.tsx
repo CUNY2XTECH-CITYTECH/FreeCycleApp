@@ -1,4 +1,4 @@
-import PostForm from "../components/post-form";
+import PostForm from "../components/product-form";
 // import Navbar from "../components/navbar/navbar";
 
 export default function HomePage() {
