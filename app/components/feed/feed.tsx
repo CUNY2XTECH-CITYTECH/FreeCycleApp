@@ -1,5 +1,6 @@
+"use client"
 import React, { useState, useEffect } from 'react';
-import Product from '../../../product'; 
+import { Product } from '../Product/product'; 
 
 
 const Feed = () => {
@@ -29,7 +30,7 @@ const Feed = () => {
     return (
         <div>
             { posts.map((post) => (
-              <Product key={post.id} post={post} />
+              <Product key={post.id} id={post.id} name={post.name} description={post.description} imageUrl={post.imageUrl} price={post.price} stock={post.stock}/>
             ))}
         </div>
     );
