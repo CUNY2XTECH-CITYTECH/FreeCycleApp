@@ -1,13 +1,12 @@
 import Image from "next/image"
 import Styles from '../components/styles/home.module.css'
 
-import PostForm from "../components/post-form"
+import ProductForm from "../components/product-form"
 import Navbar from "../components/navbar/navbar"
 import Footer from "../components/footer/Footer"
 import About from "../components/about/About"
 import SearchBar from "../components/search-bar/search-bar"
-
-// Feed
+import Feed from "../components/feed/feed"
 
 export default function HomePage(){
     return (
@@ -28,12 +27,12 @@ export default function HomePage(){
         <div>
           <h1 style={{ fontSize: 30, textAlign: 'center'}}>Create a Product</h1>
           <div style={{paddingTop: '10px'}}>
-            <PostForm />
+            <ProductForm />
           </div>
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', padding: '60px' }}> <SearchBar/> </div>
         <div style={{paddingTop: '40px'}}> 
-          {/* <FeaturedItems /> This is where the feed will go */}
+          {<Feed />}
           </div>
         <div> <Footer /> </div>
       </div>

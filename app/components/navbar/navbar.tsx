@@ -100,7 +100,7 @@ const Navbar = () => {
         <LoginButton href="/login">Login</LoginButton>
         <LogoutButton href="/logout" onClick={doLogout}>Logout</LogoutButton>
 
-        <StyledLink href="/profile">
+        <StyledLink href="/profile/:userId">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="25"
@@ -121,3 +121,4 @@ const Navbar = () => {
   );
 };
 export default Navbar;
+
