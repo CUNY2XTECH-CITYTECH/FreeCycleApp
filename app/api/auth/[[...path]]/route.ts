@@ -1,6 +1,6 @@
 import { getAppDirRequestHandler } from 'supertokens-node/nextjs';
 import { NextRequest } from 'next/server';
-import '../../../supertokens/config/backend';
+import '../../../supertokens/supertokens.config';
 
 const handleCall = getAppDirRequestHandler();
 

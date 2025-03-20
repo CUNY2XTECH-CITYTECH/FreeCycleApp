@@ -19,7 +19,8 @@
     "react-dom": "^19.0.0",
     "supertokens-auth-react": "^0.48.0",
     "supertokens-node": "^21.1.0",
-    "supertokens-web-js": "^0.14.0"
+    "supertokens-web-js": "^0.14.0",
+    "styled-components": "~6.1.15"
   },
   "devDependencies": {
   "@eslint/eslintrc": "^3",
@@ -35,7 +36,6 @@
   "tailwindcss": "^3.4.1",
   "ts-node": "^10.9.2",
   "typescript": "^5",
-  "@esbuild/win32-x64": "^0.25.0",
   "tsx": "^4.19.2"
   }
 

@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import Image from "next/image"
 
 type productProps = {
     id: number
@@ -27,7 +28,7 @@ export const Product = ({id, name, description, imageUrl, price, stock}: product
     <div className="prod">
         <h1 className="prod-title">Product: {name}</h1>
         <p className="product-desc">{description}</p>
-        <img src={imageUrl}></img>
+        <Image src={imageUrl} alt="Product image"/>
         <p>Price: ${price}, In Stock: {stock}</p>
         <button onClick={() => {
             setDisplay(false)
