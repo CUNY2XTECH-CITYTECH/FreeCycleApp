@@ -1,4 +1,3 @@
-
 import { boolean, integer, numeric, pgTable, text, uuid, varchar, timestamp, real } from "drizzle-orm/pg-core";
 
 // they're using uuid here, but it should be id: serial('id').primaryKey()
@@ -22,6 +21,9 @@ export const productsTable = pgTable("products", {
     updated_at: timestamp().defaultNow().notNull(),
     is_available: boolean().default(true).notNull(),
 });
+
+export type Product = typeof productsTable.$inferSelect
+export type NewProduct = typeof productsTable.$inferInsert
 
 export const ordersTable = pgTable("orders", {
     id: uuid().primaryKey().defaultRandom(),

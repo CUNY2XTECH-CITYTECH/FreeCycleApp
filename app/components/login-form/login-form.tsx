@@ -1,4 +1,5 @@
 "use client"; 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { signIn } from "supertokens-web-js/recipe/emailpassword";
 
 async function signInClicked() {
@@ -9,7 +10,7 @@ async function signInClicked() {
     const password = formData.get("password") as string;
     
     try {
-        let response = await signIn({
+        const response = await signIn({
             formFields: [{
                 id: "email",
                 value: email

@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { Product } from '../Product/product'; 
 
 function UserProducts(){
     const [products, setProducts] = useState([]);
@@ -8,7 +9,7 @@ function UserProducts(){
     useEffect(()=>{
         const fetchProducts = async() => {
             try {
-                const response = await fetch(); api/products
+                const response = await fetch('api/product'); 
                 if (!response.ok){
                     throw new Error('Failed to fetch products');
                 }
@@ -35,8 +36,8 @@ if (error){
 return (
     <div>
       <h1>Products</h1>
-      {products.map((post) => (
-        <Products key={products.id} products={products} /> // Render a Post component for each post
+      {products.map((product) => (
+        <Product key={product.id} product={product} /> // Render a Post component for each post
       ))}
     </div>
   );
