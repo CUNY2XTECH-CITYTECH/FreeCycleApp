@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 // import { Pool } from 'pg';
-import { getAllProducts } from '../../../db/index.ts';
-import { createNewProduct } from '../../../db/index.ts';
+import { getAllProducts, createNewProduct, deleteProduct } from '../../../db/index.ts';
+// import { createNewProduct } from '../../../db/index.ts';
+
 
 // const pool = new Pool({
 //   connectionString: process.env.DATABASE_URL,
@@ -43,4 +44,18 @@ export async function POST(req: Request) {
       { status: 500 }
     );
   }
+}
+
+export async function DELETE(product_id: string){
+    try{
+      console.log(`Deleting product:${product_id}`);
+      await deleteProduct(product_id);
+      return NextResponse.json(
+        {message: `Deleted product: ${product_id}`},
+        {status: 200}
+      )
+    }
+    catch(error){
+      console.error(`Database delete error: `, error);
+    }
 }
