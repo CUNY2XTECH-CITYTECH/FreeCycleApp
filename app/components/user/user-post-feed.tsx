@@ -9,7 +9,7 @@ function UserProducts(){
     useEffect(()=>{
         const fetchProducts = async() => {
             try {
-                const response = await fetch('api/product'); 
+                const response = await fetch('http://localhost:3000/api/products/${user_id}'); 
                 if (!response.ok){
                     throw new Error('Failed to fetch products');
                 }
@@ -37,7 +37,7 @@ return (
     <div>
       <h1>Products</h1>
       {products.map((product) => (
-        <Product key={product.id} product={product} /> // Render a Post component for each post
+        <Product key={product.id} product={product} />
       ))}
     </div>
   );
